@@ -16,27 +16,6 @@ FROM ckan/ckan-dev:2.11
 #    pip3 install -r ${APP_DIR}/src/ckanext-xloader/requirements.txt && \
 #    pip3 install -U requests[security]
 
-USER root
-
-### Datapusher-plus ###
-## Instalación de QSV
-RUN apt-get update
-RUN apt-get install -y gnupg
-RUN wget https://dathere.github.io/qsv-deb-releases/qsv-deb.gpg
-RUN gpg -o /usr/share/keyrings/qsv-deb.gpg --dearmor qsv-deb.gpg
-RUN echo "deb [signed-by=/usr/share/keyrings/qsv-deb.gpg] https://dathere.github.io/qsv-deb-releases ./" | \
-    tee /etc/apt/sources.list.d/qsv.list
-
-RUN apt-get update
-RUN apt-get install qsv
-
-USER ckan
-
-RUN pip3 install --upgrade pip
-RUN pip3 install datasize
-RUN pip3 install -e 'git+https://github.com/dathere/datapusher-plus.git@2.0.0#egg=datapusher-plus'
-RUN pip3 install -r ./src/datapusher-plus/requirements.txt
-
 ### Harvester ###
 #RUN pip3 install -e 'git+https://github.com/ckan/ckanext-harvest.git@master#egg=ckanext-harvest' && \
 #    pip3 install -r ${APP_DIR}/src/ckanext-harvest/pip-requirements.txt
@@ -71,5 +50,3 @@ RUN for d in $APP_DIR/patches/*; do \
             done ; \
         fi ; \
     done
-
-RUN ckan config-tool ${CKAN_INI} "ckanext.datapusher_plus.api_token=$(ckan -c ${CKAN_INI} user token add ${CKAN_SYSADMIN_NAME} dpplus | tail -n 1 | tr -d '\t')"
