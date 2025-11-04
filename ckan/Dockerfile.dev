@@ -24,6 +24,7 @@ FROM ckan/ckan-dev:2.11
 ### Scheming ###
 RUN cd ${APP_DIR}/src/
 RUN pip3 install -e "git+https://github.com/ckan/ckanext-scheming.git#egg=ckanext-scheming"
+COPY ./schemas/ ${APP_DIR}/src/ckanext-scheming/ckanext/scheming/schemas/
 
 ### Pages ###
 #RUN  pip3 install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages
