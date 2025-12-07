@@ -22,6 +22,9 @@ RUN pip3 install -e 'git+https://github.com/ckan/ckanext-geoview.git@master#egg=
 ### Spatial Widget AR ###
 RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-spatial-widget-ar.git#egg=ckanext-spatial-widget-ar'
 
+### GobAr theme ###
+RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-gobar-theme.git#egg=ckanext-gobar_theme'
+
 ### Harvester ###
 #RUN pip3 install -e 'git+https://github.com/ckan/ckanext-harvest.git@master#egg=ckanext-harvest' && \
 #    pip3 install -r ${APP_DIR}/src/ckanext-harvest/pip-requirements.txt
