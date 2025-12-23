@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $CKAN__PLUGINS == *"xloader"* ]]; then
+if echo "$CKAN__PLUGINS" | grep -qw "xloader"; then
    # Xloader settings have been configured in the .env file
    # Set API token if necessary
    if [ -z "$CKANEXT__XLOADER__API_TOKEN" ] ; then

@@ -1,20 +1,26 @@
 FROM ckan/ckan-dev:2.11
 
-# Install any extensions needed by your CKAN instance
-# - Make sure to add the plugins to CKAN__PLUGINS in the .env file
-# - Also make sure all provide all extra configuration options, either by:
-#   * Adding them to the .env file (check the ckanext-envvars syntax for env vars), or
-#   * Adding extra configuration scripts to /docker-entrypoint.d folder) to update
-#      the CKAN config file (ckan.ini) with the `ckan config-tool` command
-#
-# See README > Extending the base images for more details
-#
-# For instance:
-#
+USER root
+
+# Instalar dependencias del sistema para spatial
+RUN apt-get install -y python3-dev libxml2-dev libxslt1-dev libgeos-c1v5
+
+USER ckan
 ### XLoader ###
 RUN pip3 install -e 'git+https://github.com/ckan/ckanext-xloader.git@master#egg=ckanext-xloader' && \
     pip3 install -r ${APP_DIR}/src/ckanext-xloader/requirements.txt && \
     pip3 install -U requests[security]
+
+
+### Spatial ###
+RUN pip3 install -e 'git+https://github.com/ckan/ckanext-spatial.git@v2.3.1#egg=ckanext-spatial' && \
+    pip3 install -r ${APP_DIR}/src/ckanext-spatial/requirements.txt
+
+### Geoview ###
+RUN pip3 install -e 'git+https://github.com/ckan/ckanext-geoview.git@master#egg=ckanext-geoview'
+
+### Spatial Widget AR ###
+RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-spatial-widget-ar.git#egg=ckanext-spatial-widget-ar'
 
 ### Harvester ###
 #RUN pip3 install -e 'git+https://github.com/ckan/ckanext-harvest.git@master#egg=ckanext-harvest' && \
