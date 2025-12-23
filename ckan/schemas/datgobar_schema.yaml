@@ -1,0 +1,133 @@
+dataset_type: dataset
+about: A reimplementation of the default CKAN dataset schema
+about_url: https://github.com/ckan/ckanext-scheming
+
+
+dataset_fields:
+
+- field_name: dataset_identifier
+  label: Dataset identifier
+  form_placeholder: Identificador único del dataset
+  required: true
+
+- field_name: dataset_title
+  label: Dataset title
+  preset: title
+  form_placeholder: Título del dataset
+
+- field_name: dataset_description
+  label: Description
+  form_snippet: markdown.html
+  form_placeholder: Descripción del dataset
+
+- field_name: dataset_publisher_name
+  label: Dataset publisher name
+  preset: dataset_organization
+
+- field_name: dataset_publisher_mbox
+  label: Dataset publisher contact
+  form_placeholder: correoisnt@gob.ar
+  display_snippet: email.html
+
+- field_name: dataset_contactPoint_fn
+  label: Dataset contact point
+  form_placeholder: Aldana y Paula
+  display_property: dc:contributor
+
+- field_name: dataset_contactPoint_hasEmail
+  label: Contact point Email
+  form_placeholder: joe@example.com
+  display_property: dc:contributor
+  display_snippet: email.html
+  display_email_name_field: author
+
+- field_name: dataset_contactPoint_hasEmail
+  label: Contact point Email
+  form_placeholder: joe@example.com
+  display_property: dc:contributor
+  display_snippet: email.html
+  display_email_name_field: author
+
+- field_name: dataset_superTheme
+  label: Dataset supertheme
+  preset: tag_string_autocomplete
+  form_placeholder: eg. economy, mental health, government
+
+- field_name: dataset_theme
+  label: Dataset theme
+  preset: tag_string_autocomplete
+  form_placeholder: eg. economy, mental health, government
+
+- field_name: dataset_keyword
+  label: Keyword
+  form_placeholder: eg. economy, mental health, government
+
+- field_name: dataset_accrualPeriodicity
+  label: Dataset Accrual Periodicity
+  help_text: cada cuanto se actualiza eg.(R/P1M)
+
+- field_name: dataset_keyword
+  label: keywords
+  form_placeholder: eg. economy, mental health, government
+
+- field_name: dataset_issued
+  label: Dataset issued
+  help_text: fecha de emisión del dataset
+
+- field_name: dataset_modified
+  label: Dataset modified
+  form_placeholder:
+
+- field_name: dataset_language
+  label: Dataset Language
+  form_placeholder: fecha de modificación del dataset
+
+- field_name: dataset_spatial
+  label: Dataset Spatial
+  form_placeholder: Cobertura espacial
+
+- field_name: dataset_temporal
+  label: Dataset Temporal
+  form_placeholder: Cobertura temporal
+
+- field_name: dataset_landingPage
+  label: Dataset Landing Page
+  form_placeholder: url original del dataset
+  display_property: foaf:homepage
+  display_snippet: link.html
+
+- field_name: dataset_license
+  label: Dataset License
+  form_snippet: license.html
+  help_text: License definitions and additional information can be found at http://opendefinition.org/
+
+- field_name: dataset_source
+  label: Dataset Source
+  form_placeholder: Fuente
+
+- field_name: dataset_accessLevel
+  label: Dataset accessLevel
+
+- field_name: version
+  label: Version
+  validators: ignore_missing unicode_safe package_version_validator
+  form_placeholder: '1.0'
+
+resource_fields:
+
+- field_name: url
+  label: URL
+  preset: resource_url_upload
+
+- field_name: name
+  label: Name
+  form_placeholder: eg. January 2011 Gold Prices
+
+- field_name: description
+  label: Description
+  form_snippet: markdown.html
+  form_placeholder: Some useful notes about the data
+
+- field_name: format
+  label: Format
+  preset: resource_format_autocomplete
