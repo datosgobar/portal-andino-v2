@@ -1,0 +1,14 @@
+# gobar_harvest-js:
+#   filter: rjsmin
+#   output: ckanext-gobar_harvest/%(version)s-gobar_harvest.js
+#   contents:
+#     - js/gobar_harvest.js
+#   extra:
+#     preload:
+#       - base/main
+
+# gobar_harvest-css:
+#   filter: cssrewrite
+#   output: ckanext-gobar_harvest/%(version)s-gobar_harvest.css
+#   contents:
+#     - css/gobar_harvest.css
