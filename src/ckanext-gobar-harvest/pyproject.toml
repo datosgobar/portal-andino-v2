@@ -1,10 +1,10 @@
 [project]
 name = "ckanext-gobar-harvest"
 version = "0.0.1"
-description = ""
+description = "Xlsx Harvester"
 readme = "README.md"
 authors = [
-    {name = "datosgobar", email = "datosgobar@sicyt.gob.ar"}
+    {name = "Dirección Nacional de Datos Abiertos", email = "datosgobar@gmail.com"}
 ]
 license = {text = "AGPL"}
 classifiers = [
@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
 ]
 
-keywords = [ "CKAN", ]
+keywords = [ "CKAN", "harvest,", "ckan,", "catalog,", "federation,", "xlsx,", "andino", ]
 dependencies = []
 
 [project.urls]
@@ -23,7 +23,8 @@ Homepage = "https://github.com/datosgobar/ckanext-gobar-harvest"
 
 [project.entry-points."ckan.plugins"]
 gobar_harvest = "ckanext.gobar_harvest.plugin:GobarHarvestPlugin"
-
+gobar_ckan = "ckanext.gobar_harvest.harvesters:GobarCKANHarvester"
+xlsx = "ckanext.gobar_harvest.harvesters:XLSXHarvester"
 
 [build-system]
 requires = ["setuptools"]
