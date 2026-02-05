@@ -69,6 +69,29 @@ services:
     healthcheck:
       test: ["CMD", "wget", "-qO", "/dev/null", "http://localhost:8983/solr/"]
 
+  solr-init:
+    image: curlimages/curl
+    depends_on:
+      - solr
+    restart: "no"
+    command: >
+      sh -c '
+      set -x;
+      echo "running solr-init...";
+      until curl -s http://solr:8983/solr/admin/cores?action=STATUS | grep -q "\"ckan\""; do sleep 2; done;
+      echo "ckan core ready";
+
+      curl -s -X POST -H "Content-type:application/json" http://solr:8983/solr/ckan/schema \
+        --data-raw "{\"add-field-type\":{\"name\":\"location_rpt\",\"class\":\"solr.SpatialRecursivePrefixTreeFieldType\",\"spatialContextFactory\":\"JTS\",\"autoIndex\":true,\"validationRule\":\"repairBuffer0\",\"distErrPct\":0.025,\"maxDistErr\":0.001,\"distanceUnits\":\"kilometers\"}}" || true;
+
+      curl -s -X POST -H "Content-type:application/json" http://solr:8983/solr/ckan/schema \
+        --data-raw "{\"add-field\":{\"name\":\"spatial_geom\",\"type\":\"location_rpt\",\"indexed\":true,\"stored\":true,\"multiValued\":true}}" || true;
+
+      curl -s http://solr:8983/solr/admin/cores?action=RELOAD&core=ckan || true;
+
+      echo "done solr-init";
+      '
+
   redis:
     image: redis:${REDIS_VERSION}
     restart: unless-stopped
