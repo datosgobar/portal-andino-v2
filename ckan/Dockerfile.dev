@@ -29,9 +29,9 @@ RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-spatial-widget-
 # will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
 
 ### Scheming ###
-RUN cd ${APP_DIR}/src/
-RUN pip3 install -e "git+https://github.com/ckan/ckanext-scheming.git#egg=ckanext-scheming"
-COPY ./schemas/ ${APP_DIR}/src/ckanext-scheming/ckanext/scheming/schemas/
+#RUN cd ${APP_DIR}/src/
+#RUN pip3 install -e "git+https://github.com/ckan/ckanext-scheming.git#egg=ckanext-scheming"
+#COPY ./schemas/ ${APP_DIR}/src/ckanext-scheming/ckanext/scheming/schemas/
 
 ### Pages ###
 #RUN  pip3 install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages
