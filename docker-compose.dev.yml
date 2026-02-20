@@ -25,6 +25,7 @@ services:
     volumes:
       - ckan_storage:/var/lib/ckan
       - pip_cache:/root/.cache/pip
+      - ./src:/srv/app/src_extensions
       - site_packages:/usr/local/lib/python3.10/site-packages
       - local_bin:/usr/local/bin
       - home_dir:/srv/app/
