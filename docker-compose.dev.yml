@@ -10,6 +10,8 @@ volumes:
 services:
 
   ckan-dev:
+    stdin_open: true
+    tty: true
     build:
       context: ckan/
       dockerfile: Dockerfile.dev
@@ -26,6 +28,7 @@ services:
       - ckan_storage:/var/lib/ckan
       - pip_cache:/root/.cache/pip
       - ./src:/srv/app/src_extensions
+      #- ./ckan_src/ckan:/srv/app/src/ckan/ckan
       - site_packages:/usr/local/lib/python3.10/site-packages
       - local_bin:/usr/local/bin
       - home_dir:/srv/app/
