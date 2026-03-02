@@ -108,3 +108,7 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "redis-cli", "-e", "QUIT"]
+
+networks:
+  default:
+    name: andino_network_dev
