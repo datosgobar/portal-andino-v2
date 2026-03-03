@@ -79,6 +79,8 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-qO", "/dev/null", "http://localhost:8983/solr/"]
+    ports:
+      - "8983:8983"
 
   solr-init:
     image: curlimages/curl
