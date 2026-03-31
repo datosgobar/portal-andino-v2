@@ -5,6 +5,7 @@ USER root
 # Instalar dependencias del sistema para spatial
 RUN apt-get install -y python3-dev libxml2-dev libxslt1-dev libgeos-c1v5
 RUN apt-get install -y nano
+RUN apt-get install -y supervisor
 
 USER ckan
 ### XLoader ###
@@ -28,8 +29,8 @@ RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-spatial-widget-
 RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-gobar-theme.git@home-y-estetica-general#egg=ckanext-gobar_theme'
 
 ### Harvester ###
-#RUN pip3 install -e 'git+https://github.com/ckan/ckanext-harvest.git@master#egg=ckanext-harvest' && \
-#    pip3 install -r ${APP_DIR}/src/ckanext-harvest/pip-requirements.txt
+RUN pip3 install -e 'git+https://github.com/ckan/ckanext-harvest.git@master#egg=ckanext-harvest' && \
+    pip3 install -r ${APP_DIR}/src/ckanext-harvest/pip-requirements.txt
 # will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
 
 ### Scheming ###
@@ -65,3 +66,5 @@ RUN for d in $APP_DIR/patches/*; do \
             done ; \
         fi ; \
     done
+
+COPY --chown=ckan-sys:ckan-sys supervisor/* /etc/supervisor/conf.d/
