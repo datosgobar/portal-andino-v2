@@ -33,6 +33,9 @@ RUN pip3 install -e 'git+https://github.com/ckan/ckanext-harvest.git@master#egg=
     pip3 install -r ${APP_DIR}/src/ckanext-harvest/pip-requirements.txt
 # will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
 
+###Hierarchy###
+RUN pip3 install -e "git+https://github.com/ckan/ckanext-hierarchy.git#egg=ckanext-hierarchy"
+
 ### Scheming ###
 RUN cd ${APP_DIR}/src/
 #RUN pip3 install -e "git+https://github.com/ckan/ckanext-scheming.git#egg=ckanext-scheming"
