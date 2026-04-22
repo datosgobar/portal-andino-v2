@@ -30,8 +30,8 @@ RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-gobar-theme.git
 
 ### Harvester ###
 #Para hacer pruebas, comentar esta instalación e instalar via bin/install_src
-#RUN pip3 install -e 'git+https://github.com/ckan/ckanext-gobar-harvest.git@development#egg=ckanext-gobar-harvest' && \
-#    pip3 install -r ${APP_DIR}/src/ckanext-harvest/pip-requirements.txt
+RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git@development#egg=ckanext-gobar-harvest' && \
+    pip3 install -r ${APP_DIR}/src/ckanext-gobar-harvest/pip-requirements.txt
 # will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
 
 ###Hierarchy###
