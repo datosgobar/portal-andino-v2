@@ -29,8 +29,9 @@ RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-spatial-widget-
 RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-gobar-theme.git@home-y-estetica-general#egg=ckanext-gobar_theme'
 
 ### Harvester ###
-RUN pip3 install -e 'git+https://github.com/ckan/ckanext-harvest.git@master#egg=ckanext-harvest' && \
-    pip3 install -r ${APP_DIR}/src/ckanext-harvest/pip-requirements.txt
+#Para hacer pruebas, comentar esta instalación e instalar via bin/install_src
+#RUN pip3 install -e 'git+https://github.com/ckan/ckanext-gobar-harvest.git@development#egg=ckanext-gobar-harvest' && \
+#    pip3 install -r ${APP_DIR}/src/ckanext-harvest/pip-requirements.txt
 # will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
 
 ###Hierarchy###
@@ -38,8 +39,7 @@ RUN pip3 install -e "git+https://github.com/ckan/ckanext-hierarchy.git#egg=ckane
 
 ### Scheming ###
 RUN cd ${APP_DIR}/src/
-#RUN pip3 install -e "git+https://github.com/ckan/ckanext-scheming.git#egg=ckanext-scheming"
-#COPY ./schemas/ ${APP_DIR}/src/ckanext-scheming/ckanext/scheming/schemas/
+#Para hacer pruebas, comentar esta instalación e instalar via bin/install_src
 RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@development_v2#egg=ckanext-scheming-gobar"
 
 ### Pages ###
