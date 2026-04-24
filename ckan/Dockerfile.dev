@@ -26,7 +26,7 @@ RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-spatial-widget-
 
 ### GobAr theme ###
 #RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-gobar-theme.git#egg=ckanext-gobar_theme'
-RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-gobar-theme.git@home-y-estetica-general#egg=ckanext-gobar_theme'
+RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-gobar-theme.git@main#egg=ckanext-gobar_theme'
 
 ### Harvester ###
 #Para hacer pruebas, comentar esta instalación e instalar via bin/install_src
