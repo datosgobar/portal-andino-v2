@@ -22,14 +22,12 @@ RUN pip3 install -e 'git+https://github.com/ckan/ckanext-spatial.git@v2.3.1#egg=
 RUN pip3 install -e 'git+https://github.com/ckan/ckanext-geoview.git@master#egg=ckanext-geoview'
 
 ### Spatial Widget AR ###
-RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-spatial-widget-ar.git#egg=ckanext-spatial-widget-ar'
+RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-spatial-widget-ar.git@development#egg=ckanext-spatial-widget-ar'
 
 ### GobAr theme ###
-#RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-gobar-theme.git#egg=ckanext-gobar_theme'
-RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-gobar-theme.git@main#egg=ckanext-gobar_theme'
+RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-theme.git@development#egg=ckanext-gobar_theme'
 
 ### Harvester ###
-#Para hacer pruebas, comentar esta instalación e instalar via bin/install_src
 RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git@development#egg=ckanext-gobar-harvest' && \
     pip3 install -r ${APP_DIR}/src/ckanext-gobar-harvest/pip-requirements.txt
 # will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
@@ -39,8 +37,7 @@ RUN pip3 install -e "git+https://github.com/ckan/ckanext-hierarchy.git#egg=ckane
 
 ### Scheming ###
 RUN cd ${APP_DIR}/src/
-#Para hacer pruebas, comentar esta instalación e instalar via bin/install_src
-RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@development_v2#egg=ckanext-scheming-gobar"
+RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@development#egg=ckanext-scheming-gobar"
 
 ### Pages ###
 #RUN  pip3 install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages
