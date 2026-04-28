@@ -22,7 +22,7 @@ RUN pip3 install -e 'git+https://github.com/ckan/ckanext-spatial.git@v2.3.1#egg=
 RUN pip3 install -e 'git+https://github.com/ckan/ckanext-geoview.git@master#egg=ckanext-geoview'
 
 ### Spatial Widget AR ###
-RUN pip3 install -e 'git+https://github.com/AlenCarbajal/ckanext-spatial-widget-ar.git@development#egg=ckanext-spatial-widget-ar'
+RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-spatial-widget-ar.git@development#egg=ckanext-spatial-widget-ar'
 
 ### GobAr theme ###
 RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-theme.git@development#egg=ckanext-gobar_theme'
