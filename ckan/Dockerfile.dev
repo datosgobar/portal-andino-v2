@@ -4,17 +4,32 @@ USER root
 
 # Instalar dependencias del sistema para spatial
 RUN apt-get install -y python3-dev libxml2-dev libxslt1-dev libgeos-c1v5
-RUN apt-get install -y nano
-RUN apt-get install -y supervisor
-RUN chown -R ckan:ckan-sys /var/log/supervisor
 
-#USER ckan
+# Instala supervisor, copia arrchivos de configurración y otorga permisos de escritura para el usuario ckan
+RUN apt-get install -y supervisor && chown -R ckan:ckan-sys /var/log/supervisor
+COPY supervisor/* /etc/supervisor/conf.d/
+
+# Instala utilidades de desarrollo
+RUN apt-get install -y nano procps curl
+
+USER ckan
+
+# Install any extensions needed by your CKAN instance
+# - Make sure to add the plugins to CKAN__PLUGINS in the .env file
+# - Also make sure all provide all extra configuration options, either by:
+#   * Adding them to the .env file (check the ckanext-envvars syntax for env vars), or
+#   * Adding extra configuration scripts to /docker-entrypoint.d folder) to update
+#      the CKAN config file (ckan.ini) with the `ckan config-tool` command
+#
+# See README > Extending the base images for more details
+#
+# For instance:
+#
 
 ### XLoader ###
 #RUN pip3 install -e 'git+https://github.com/ckan/ckanext-xloader.git@master#egg=ckanext-xloader' && \ 
 #    pip3 install -r ${APP_DIR}/src/ckanext-xloader/requirements.txt && \
 #    pip3 install -U requests[security]
-
 
 ### Spatial ###
 RUN pip3 install -e 'git+https://github.com/ckan/ckanext-spatial.git@v2.3.1#egg=ckanext-spatial' && \
@@ -22,6 +37,20 @@ RUN pip3 install -e 'git+https://github.com/ckan/ckanext-spatial.git@v2.3.1#egg=
 
 ### Geoview ###
 RUN pip3 install -e 'git+https://github.com/ckan/ckanext-geoview.git@master#egg=ckanext-geoview'
+
+###Hierarchy###
+RUN pip3 install -e "git+https://github.com/ckan/ckanext-hierarchy.git#egg=ckanext-hierarchy"
+
+### Pages ###
+#RUN  pip3 install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages
+
+### DCAT ###
+#RUN  pip3 install -e git+https://github.com/ckan/ckanext-dcat.git@v0.0.6#egg=ckanext-dcat && \
+#     pip3 install -r https://raw.githubusercontent.com/ckan/ckanext-dcat/v0.0.6/requirements.txt
+
+##################################
+### LIBRERIAS DE DATOS GOBAR #####
+##################################
 
 ### Spatial Widget AR ###
 RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-spatial-widget-ar.git@development#egg=ckanext-spatial-widget-ar'
@@ -34,22 +63,16 @@ RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git
     pip3 install -r ${APP_DIR}/src/ckanext-gobar-harvest/pip-requirements.txt
 # will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
 
-###Hierarchy###
-RUN pip3 install -e "git+https://github.com/ckan/ckanext-hierarchy.git#egg=ckanext-hierarchy"
-
 ### Scheming ###
 RUN cd ${APP_DIR}/src/
 RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@development#egg=ckanext-scheming-gobar"
 
-### Pages ###
-#RUN  pip3 install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages
-
-### DCAT ###
-#RUN  pip3 install -e git+https://github.com/ckan/ckanext-dcat.git@v0.0.6#egg=ckanext-dcat && \
-#     pip3 install -r https://raw.githubusercontent.com/ckan/ckanext-dcat/v0.0.6/requirements.txt
-
 # Clone the extension(s) your are writing for your own project in the `src` folder
 # to get them mounted in this image at runtime
+
+############################
+### EJECUCION DE SCRIPTS ###
+############################
 
 # Copy custom initialization scripts
 COPY --chown=ckan-sys:ckan-sys docker-entrypoint.d/* /docker-entrypoint.d/
@@ -57,9 +80,9 @@ COPY --chown=ckan-sys:ckan-sys docker-entrypoint.d/* /docker-entrypoint.d/
 # Apply any patches needed to CKAN core or any of the built extensions (not the
 # runtime mounted ones)
 COPY --chown=ckan-sys:ckan-sys patches ${APP_DIR}/patches
-COPY --chown=ckan:ckan-sys supervisor/* /etc/supervisor/conf.d/
 
-USER ckan
+# Copy script to install sources
+COPY --chown=ckan:ckan-sys setup/install_src.sh.override ${APP_DIR}/install_src.sh
 
 RUN for d in $APP_DIR/patches/*; do \
         if [ -d $d ]; then \

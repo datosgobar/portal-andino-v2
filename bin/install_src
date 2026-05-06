@@ -3,4 +3,4 @@
 set -e
 ROOT="$(dirname ${BASH_SOURCE[0]})/.."
 
-docker compose -f "${ROOT}/docker-compose.dev.yml" run -u root ckan-dev ./install_src.sh
+docker compose -f "${ROOT}/docker-compose.dev.yml" run -u ckan --rm ckan-dev ./install_src.sh
