@@ -5,7 +5,7 @@ USER root
 # Instalar dependencias del sistema para spatial
 RUN apt-get install -y python3-dev libxml2-dev libxslt1-dev libgeos-c1v5
 
-# Instala supervisor, copia arrchivos de configurración y otorga permisos de escritura para el usuario ckan
+# Instala supervisor, copia archivos de configuración y otorga permisos de escritura para el usuario ckan
 RUN apt-get install -y supervisor && chown -R ckan:ckan-sys /var/log/supervisor
 COPY supervisor/* /etc/supervisor/conf.d/
 
@@ -64,7 +64,6 @@ RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git
 # will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
 
 ### Scheming ###
-RUN cd ${APP_DIR}/src/
 RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@development#egg=ckanext-scheming-gobar"
 
 # Clone the extension(s) your are writing for your own project in the `src` folder
