@@ -23,6 +23,7 @@ services:
       - local_bin:/usr/local/bin
       - home_dir:/srv/app/
       - ./src:/srv/app/src_extensions
+      - ./ckan/cron_ckan:/var/spool/cron/crontabs/ckan
     depends_on:
       ckan-dev:
         condition: service_healthy
