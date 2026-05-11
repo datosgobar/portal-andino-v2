@@ -48,8 +48,8 @@ RUN pip3 install -e "git+https://github.com/ckan/ckanext-hierarchy.git#egg=ckane
 #RUN  pip3 install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages
 
 ### DCAT ###
-#RUN  pip3 install -e git+https://github.com/ckan/ckanext-dcat.git@v0.0.6#egg=ckanext-dcat && \
-#     pip3 install -r https://raw.githubusercontent.com/ckan/ckanext-dcat/v0.0.6/requirements.txt
+RUN  pip3 install -e git+https://github.com/ckan/ckanext-dcat.git@v2.4.2#egg=ckanext-dcat && \
+    pip3 install -r https://raw.githubusercontent.com/ckan/ckanext-dcat/v2.4.2/requirements.txt
 
 ##################################
 ### LIBRERIAS DE DATOS GOBAR #####
