@@ -12,4 +12,6 @@ docker volume rm -f site_packages || true
 docker volume rm -f local_bin || true
 docker volume rm -f home_dir || true
 
-docker compose -f "${ROOT}/docker-compose.dev.yml" up -d --build ckan-dev ckan-worker
+docker builder prune
+docker compose -f "${ROOT}/docker-compose.dev.yml" build --no-cache
+docker compose -f "${ROOT}/docker-compose.dev.yml" up -d --build --force-recreate ckan-dev ckan-worker

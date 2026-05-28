@@ -62,12 +62,12 @@ RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-spatial-widget-ar
 RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-theme.git@development#egg=ckanext-gobar_theme'
 
 ### Harvester ###
-RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git@development#egg=ckanext-gobar-harvest' && \
-    pip3 install -r ${APP_DIR}/src/ckanext-gobar-harvest/pip-requirements.txt
+#RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git@development#egg=ckanext-gobar-harvest' && \
+#    pip3 install -r ${APP_DIR}/src/ckanext-gobar-harvest/pip-requirements.txt
 # will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
 
 ### Scheming ###
-RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@development#egg=ckanext-scheming-gobar"
+#RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@development#egg=ckanext-scheming-gobar"
 
 # Clone the extension(s) your are writing for your own project in the `src` folder
 # to get them mounted in this image at runtime
