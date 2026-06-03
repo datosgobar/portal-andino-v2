@@ -50,6 +50,8 @@ services:
       interval: 60s
       timeout: 10s
       retries: 3
+    ports:
+      - "0.0.0.0:5000:5000"
     
   datapusher:
     networks:
@@ -87,7 +89,10 @@ services:
   solr:
     networks:
       - solrnet
-    image: ckan/ckan-solr:${SOLR_IMAGE_VERSION}
+    build:
+      context: ckan/solr/
+      args:
+        - SOLR_VERSION=${SOLR_IMAGE_VERSION}
     volumes:
       - solr_data:/var/solr
     restart: unless-stopped
