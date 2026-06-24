@@ -76,7 +76,7 @@ services:
       - local_bin:/usr/local/bin
       - home_dir:/srv/app/
       - site_packages:/usr/local/lib/python3.10/site-packages
-      - ./ckan/cron_ckan:/var/spool/cron/crontabs/ckan
+      - ./ckan/cron_ckan:/var/spool/cron/crontabs/root
     depends_on:
       ckan:
         condition: service_healthy
