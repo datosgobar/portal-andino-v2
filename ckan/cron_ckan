@@ -26,4 +26,5 @@
 # m h  dom mon dow   command
 
 
-*/15 * * * * /usr/local/bin/ckan -c /srv/app/ckan.ini harvester run
+#*/15 * * * * /usr/local/bin/ckan -c /srv/app/ckan.ini harvester run
+*/5 * * * * /usr/local/bin/ckan -c /srv/app/ckan.ini harvester run >> /var/log/ckan_harvester.log 2>&1
