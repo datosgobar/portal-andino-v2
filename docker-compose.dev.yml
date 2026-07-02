@@ -1,3 +1,7 @@
+# Nombre fijo de proyecto, distinto del de prod: dev y prod no deben
+# compartir volúmenes (home_dir/site_packages viejos rompen los rebuilds).
+name: portal-andino-v2-dev
+
 volumes:
   ckan_storage:
   pg_data:
