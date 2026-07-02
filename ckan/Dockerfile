@@ -3,13 +3,14 @@ FROM ckan/ckan-base:2.11
 USER root
 
 # Instalar dependencias del sistema para spatial
+RUN apt-get update --fix-missing
 RUN apt-get install -y python3-dev libxml2-dev libxslt1-dev libgeos-c1v5
 
 # Instala supervisor y cron, copia archivos de configuración y otorga permisos de escritura para el usuario ckan
 RUN apt-get install -y supervisor cron && chown -R ckan:ckan-sys /var/log/supervisor
 COPY supervisor/* /etc/supervisor/conf.d/
 
-USER ckan
+#USER ckan
 
 ################################
 #INSTALA EXTENSIONES NECESARIAS
@@ -34,7 +35,7 @@ RUN  pip3 install -e git+https://github.com/ckan/ckanext-dcat.git@v2.4.2#egg=cka
 ##################################
 
 ### Spatial Widget AR ###
-RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-spatial-widget-ar.git@master#egg=ckanext-spatial-widget-ar'
+RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-spatial-widget-ar.git@main#egg=ckanext-spatial-widget-ar'
 
 ### GobAr theme ###
 RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-theme.git@main#egg=ckanext-gobar_theme'

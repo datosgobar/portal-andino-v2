@@ -3,7 +3,7 @@ FROM ckan/ckan-dev:2.11
 USER root
 
 # Instalar dependencias del sistema para spatial
-RUN apt-get install -y python3-dev libxml2-dev libxslt1-dev libgeos-c1v5
+RUN apt-get update && apt-get install -y python3-dev libxml2-dev libxslt1-dev libgeos-c1v5
 
 # Instala supervisor, copia archivos de configuración y otorga permisos de escritura para el usuario ckan
 RUN apt-get install -y supervisor && chown -R ckan:ckan-sys /var/log/supervisor
@@ -62,12 +62,14 @@ RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-spatial-widget-ar
 RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-theme.git@development#egg=ckanext-gobar_theme'
 
 ### Harvester ###
-#RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git@development#egg=ckanext-gobar-harvest' && \
-#    pip3 install -r ${APP_DIR}/src/ckanext-gobar-harvest/pip-requirements.txt
+# Fork de ckanext-harvest: registra harvest, ckan_harvester, gobar_ckan_harvester y xlsx_harvester (pyproject.toml)
+RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git@development#egg=ckanext-gobar-harvest' && \
+    pip3 install -r ${APP_DIR}/src/ckanext-gobar-harvest/pip-requirements.txt
 # will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
 
 ### Scheming ###
-#RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@development#egg=ckanext-scheming-gobar"
+# Fork de ckanext-scheming: registra scheming_datasets + provee el schema datgobar
+RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@development#egg=ckanext-scheming-gobar"
 
 # Clone the extension(s) your are writing for your own project in the `src` folder
 # to get them mounted in this image at runtime
