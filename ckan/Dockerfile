@@ -48,6 +48,10 @@ RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git
 ### Scheming ###
 RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@master#egg=ckanext-scheming-gobar"
 
+##Series-explorer##
+RUN pip install -e 'git+https://github.com/datosgobar/ckanext-series-explorer.git#egg=ckanext-series-explorer' \
+    && pip install -r ${APP_DIR}/src/ckanext-series-explorer/requirements.txt
+
 
 ############################
 ### EJECUCION DE SCRIPTS ###
