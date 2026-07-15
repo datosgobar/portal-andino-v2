@@ -79,7 +79,7 @@ services:
       - pip_cache:/root/.cache/pip
       - local_bin:/usr/local/bin
       - site_packages:/usr/local/lib/python3.10/site-packages
-      - ./ckan/cron_ckan:/var/spool/cron/crontabs/ckan
+      - ./ckan/cron_ckan:/var/spool/cron/crontabs/root
     depends_on:
       ckan:
         condition: service_healthy
@@ -130,6 +130,28 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-qO", "/dev/null", "http://localhost:8983/solr/"]
+
+  solr-init:
+    image: curlimages/curl
+    networks:
+      - solrnet
+    depends_on:
+      solr:
+        condition: service_healthy
+    restart: "no"
+    command: >
+      sh -c '
+      set -x;
+      until curl -s http://solr:8983/solr/admin/cores?action=STATUS | grep -q "\"ckan\""; do sleep 2; done;
+
+      curl -s -X POST -H "Content-type:application/json" http://solr:8983/solr/ckan/schema \
+        --data-raw "{\"add-field-type\":{\"name\":\"location_rpt\",\"class\":\"solr.SpatialRecursivePrefixTreeFieldType\",\"spatialContextFactory\":\"JTS\",\"autoIndex\":true,\"validationRule\":\"repairBuffer0\",\"distErrPct\":0.025,\"maxDistErr\":0.001,\"distanceUnits\":\"kilometers\"}}" || true;
+
+      curl -s -X POST -H "Content-type:application/json" http://solr:8983/solr/ckan/schema \
+        --data-raw "{\"add-field\":{\"name\":\"spatial_geom\",\"type\":\"location_rpt\",\"indexed\":true,\"stored\":true,\"multiValued\":true}}" || true;
+
+      curl -s "http://solr:8983/solr/admin/cores?action=RELOAD&core=ckan" || true;
+      '
 
   redis:
     image: redis:${REDIS_VERSION}
