@@ -71,6 +71,11 @@ RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git
 # Fork de ckanext-scheming: registra scheming_datasets + provee el schema datgobar
 RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@development#egg=ckanext-scheming-gobar"
 
+### Series explorer ###
+# Explorador de series de tiempo (/series); mismo install que el Dockerfile de prod
+RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-series-explorer.git#egg=ckanext-series-explorer' && \
+    pip3 install -r ${APP_DIR}/src/ckanext-series-explorer/requirements.txt
+
 # Clone the extension(s) your are writing for your own project in the `src` folder
 # to get them mounted in this image at runtime
 
