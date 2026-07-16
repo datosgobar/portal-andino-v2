@@ -1,3 +1,7 @@
+# Nombre fijo de proyecto: evita que otro checkout (u otro modo, ej. dev)
+# comparta contenedores/volúmenes por coincidencia del nombre de carpeta.
+name: portal-andino-v2
+
 volumes:
   ckan_storage:
   pg_data:
@@ -5,7 +9,6 @@ volumes:
   pip_cache:
   site_packages:
   local_bin:
-  home_dir:
 
 services:
 
@@ -45,10 +48,11 @@ services:
       redis:
         condition: service_healthy
     volumes:
+      # En prod el código vive en la imagen: no montar volúmenes sobre
+      # /srv/app, si no un volumen viejo pisa el código de cada rebuild.
       - ckan_storage:/var/lib/ckan
       - pip_cache:/root/.cache/pip
       - local_bin:/usr/local/bin
-      - home_dir:/srv/app/
       - site_packages:/usr/lib/python3.10/site-packages
     restart: unless-stopped
     healthcheck:
@@ -74,7 +78,6 @@ services:
       - ckan_storage:/var/lib/ckan
       - pip_cache:/root/.cache/pip
       - local_bin:/usr/local/bin
-      - home_dir:/srv/app/
       - site_packages:/usr/local/lib/python3.10/site-packages
       - ./ckan/cron_ckan:/var/spool/cron/crontabs/root
     depends_on:
