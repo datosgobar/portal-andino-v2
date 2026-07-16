@@ -2,7 +2,7 @@
 
 Stack dockerizado de [CKAN](https://ckan.org/) 2.11 para los portales de datos abiertos de Datos Argentina, con extensiones propias:
 
-- [ckanext-gobar-theme](https://github.com/datosgobar/ckanext-gobar-theme): theme e identidad visual.
+- [ckanext-gobar-theme](https://github.com/datosgobar/ckanext-gobar-theme): theme e identidad visual, personalizable por nodo — ver [readme-theme.md](readme-theme.md).
 - [ckanext-scheming-gobar](https://github.com/datosgobar/ckanext-scheming-gobar): esquema de metadatos (perfil `datgobar`) — ver [readme-scheming.md](readme-scheming.md).
 - [ckanext-gobar-harvest](https://github.com/datosgobar/ckanext-gobar-harvest): cosecha de catálogos externos — ver [readme-harvest.md](readme-harvest.md).
 - [ckanext-spatial-widget-ar](https://github.com/datosgobar/ckanext-spatial-widget-ar) y `ckanext-spatial`: búsqueda y mapas espaciales — ver [readme-spatial.md](readme-spatial.md).
