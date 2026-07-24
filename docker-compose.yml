@@ -6,9 +6,6 @@ volumes:
   ckan_storage:
   pg_data:
   solr_data:
-  pip_cache:
-  site_packages:
-  local_bin:
 
 services:
 
@@ -25,7 +22,6 @@ services:
     ports:
       - "0.0.0.0:${NGINX_SSLPORT_HOST}:${NGINX_SSLPORT}"
       - "0.0.0.0:${NGINX_PORT_HOST}:${NGINX_PORT}"
-
 
   ckan:
     build:
@@ -51,9 +47,6 @@ services:
       # En prod el código vive en la imagen: no montar volúmenes sobre
       # /srv/app, si no un volumen viejo pisa el código de cada rebuild.
       - ckan_storage:/var/lib/ckan
-      - pip_cache:/root/.cache/pip
-      - local_bin:/usr/local/bin
-      - site_packages:/usr/lib/python3.10/site-packages
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-qO", "/dev/null", "http://localhost:5000/api/action/status_show"]
@@ -76,14 +69,10 @@ services:
       - redisnet
     volumes:
       - ckan_storage:/var/lib/ckan
-      - pip_cache:/root/.cache/pip
-      - local_bin:/usr/local/bin
-      - site_packages:/usr/local/lib/python3.10/site-packages
       - ./ckan/cron_ckan:/var/spool/cron/crontabs/root
     depends_on:
       ckan:
         condition: service_healthy
-
 
   datapusher:
     networks:
@@ -124,7 +113,7 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}"]
-     
+
   solr:
     networks:
       - solrnet
@@ -160,6 +149,7 @@ services:
       curl -s "http://solr:8983/solr/admin/cores?action=RELOAD&core=ckan" || true;
       '
 
+
   redis:
     image: redis:${REDIS_VERSION}
     networks:
@@ -167,7 +157,7 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "redis-cli", "-e", "QUIT"]
-    
+
 networks:
   webnet:
   ckannet:
