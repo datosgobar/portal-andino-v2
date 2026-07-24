@@ -91,6 +91,13 @@ services:
       - dbnet
     image: ckan/ckan-base-datapusher:${DATAPUSHER_VERSION}
     restart: unless-stopped
+    environment:
+      - DATAPUSHER_MAX_CONTENT_LENGTH=${DATAPUSHER_MAX_CONTENT_LENGTH:-1024000}
+      - DATAPUSHER_CHUNK_SIZE=${DATAPUSHER_CHUNK_SIZE:-16384}
+      - DATAPUSHER_CHUNK_INSERT_ROWS=${DATAPUSHER_CHUNK_INSERT_ROWS:-250}
+      - DATAPUSHER_DOWNLOAD_TIMEOUT=${DATAPUSHER_DOWNLOAD_TIMEOUT:-60}
+      - DATAPUSHER_SSL_VERIFY=${DATAPUSHER_SSL_VERIFY:-True}
+      - DATAPUSHER_LOG_FILE=${DATAPUSHER_LOG_FILE:-/tmp/ckan_service.log}
     healthcheck:
       test: ["CMD", "wget", "-qO", "/dev/null", "http://localhost:8800"]
       interval: 60s
