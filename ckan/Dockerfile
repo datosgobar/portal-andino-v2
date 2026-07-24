@@ -49,13 +49,14 @@ RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git
 RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@master#egg=ckanext-scheming-gobar"
 
 ##Series-explorer##
-RUN pip install -e 'git+https://github.com/datosgobar/ckanext-series-explorer.git#egg=ckanext-series-explorer' \
-    && pip install -r ${APP_DIR}/src/ckanext-series-explorer/requirements.txt
+RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-series-explorer.git#egg=ckanext-series-explorer' \
+    && pip3 install -r ${APP_DIR}/src/ckanext-series-explorer/requirements.txt
 
 ### Google Analytics ###
 # Solo tracking (googleanalytics.id); no instala requirements.txt (gdata/pyOpenSSL/rsa)
 # porque eso es solo para el retrieval de stats vía service account, que no usamos.
-RUN pip3 install -e 'git+https://github.com/ckan/ckanext-googleanalytics.git#egg=ckanext-googleanalytics'
+RUN pip3 install -e 'git+https://github.com/ckan/ckanext-googleanalytics.git#egg=ckanext-googleanalytics' \
+    && pip3 install -r ${APP_DIR}/src/ckanext-googleanalytics/requirements.txt
 
 
 ############################
