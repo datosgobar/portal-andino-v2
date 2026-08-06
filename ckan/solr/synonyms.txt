@@ -1,0 +1,57 @@
+# =====================================================================
+# SINÓNIMOS GENERALES Y FORMATOS DE DATOS
+# =====================================================================
+csv, xls, xlsx, json, geojson, shp, kml => archivo, formato, descarga
+api, endpoint, webservice => consulta
+diccionario, metadatos, estructura => esquema
+
+# =====================================================================
+# 1. ECONOMÍA, FINANZAS Y COMERCIO
+# =====================================================================
+pib, pbi => producto interno bruto
+ipc, inflacion => precios, costo de vida
+presupuestos, gastos, ingresos, egresos, plata, dinero, partidas => finanzas
+comercio, negocios, tiendas, locales, pymes, empresas => actividad economica
+impuestos, tasas, tributos, aranceles, abl, patentes => recaudacion
+
+# =====================================================================
+# 2. SALUD Y BIENESTAR
+# =====================================================================
+salud, hospital, clinica, caps, sanatorio, medico, enfermeria => sanidad
+vacunas, vacunacion, inmunizacion, dosis => campañas de salud
+enfermedades, patologias, brotes, epidemias, contagios => epidemiologia
+medicamentos, farmacias, remedios => farmaceutico
+
+# =====================================================================
+# 3. EDUCACIÓN, CIENCIA Y CULTURA
+# =====================================================================
+educacion, escuela, colegio, docencia, jardin, primario, secundario => escolar
+universidad, facultad, terciario, academico => educacion superior
+cultura, museos, teatros, cines, eventos, recitales, festivales => entretenimiento
+bibliotecas, libros, lectura => patrimonio
+
+# =====================================================================
+# 4. TRANSPORTE, MOVILIDAD Y URBANISMO
+# =====================================================================
+transporte, transito, movilidad, trafico, circulacion => vial
+colectivos, buses, omnibus, subte, metro, tren, tranvia => transporte publico
+bicis, bicicletas, ciclovias, ecobici, sendas => movilidad sustentable
+calles, avenidas, rutas, autopistas, pasajes => red vial
+estacionamiento, parquimetros, cochera, garage => parcar
+
+# =====================================================================
+# 5. MEDIO AMBIENTE Y GEOGRAFÍA
+# =====================================================================
+clima, meteorologia, tiempo, temperatura, lluvias, precipitaciones => atmosferico
+ambiente, ecologia, biodiversidad, naturaleza => medio ambiente
+reciclaje, basura, residuos, verdes, campanas => gestion ambiental
+parques, plazas, reservas, jardines, arbolado => espacios verdes
+latitud, longitud, geo, coordenadas, mapas, capas, gis => espacial
+
+# =====================================================================
+# 6. SEGURIDAD, JUSTICIA Y DEMOGRAFÍA
+# =====================================================================
+seguridad, policia, comisarias, patrulleros, camaras => prevencion
+delitos, robos, hurtos, denuncias, crimenes => estadistica criminal
+habitantes, poblacion, censos, demografia, ciudadanos => padron
+vivienda, hogares, casas, barrios, villas => habitacional

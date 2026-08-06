@@ -1,0 +1,37 @@
+# Artículos y Pronombres
+el, la, los, las, un, una, unos, unas
+este, esta, estos, estas, ese, esa, esos, esas, aquel, aquella, aquellos, aquellas
+mi, tu, su, mis, tus, sus
+yo, tu, el, ella, nosotros, vosotros, ellos, ellas, me, te, se, nos, os, le, les
+
+# Preposiciones
+a, ante, bajo, cabe, con, contra, de, desde, durante, en, entre, hacia, hasta, mediante, para, por, segun, sin, so, sobre, tras, via
+
+# Conjunciones
+y, e, ni, o, u, pero, porque, que, como, sino, aunque
+
+# Verbos muy comunes (en infinitivo y conjugados)
+ser, estar, hacer, tener, haber, es, son, fue, eran, hecho, tiene, tienen, hay
+
+# Ruido Administrativo / Palabras vacías de Datos Abiertos
+# (Evitan que buscar "datos" devuelva el 100% del catálogo)
+datos
+dataset
+datasets
+archivo
+informacion
+tabla
+lista
+registro
+registros
+portal
+abiertos
+opendata
+año
+historico
+anual
+mensual
+total
+totales
+cantidad
+numero
