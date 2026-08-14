@@ -41,10 +41,13 @@ RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-spatial-widget-ar
 RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-theme.git@main#egg=ckanext-gobar_theme'
 
 ### Harvester ###
-RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git@master#egg=ckanext-gobar-harvest' && \
+RUN pip3 install -e 'git+https://github.com/datosgobar/ckanext-gobar-harvest.git#egg=ckanext-gobar-harvest' && \
     pip3 install -r ${APP_DIR}/src/ckanext-gobar-harvest/pip-requirements.txt
 # will also require gather_consumer and fetch_consumer processes running (please see https://github.com/ckan/ckanext-harvest)
 
+### Datapusher-plus###
+RUN pip3 install -e 'git+https://github.com/dathere/datapusher-plus.git#egg=datapusher-plus'&& \
+    pip3 install -r ${APP_DIR}/src/datapusher-plus/requirements.txt
 ### Scheming ###
 RUN pip3 install -e "git+https://github.com/datosgobar/ckanext-scheming-gobar@master#egg=ckanext-scheming-gobar"
 
