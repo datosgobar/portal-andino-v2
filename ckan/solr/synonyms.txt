@@ -1,0 +1,81 @@
+# =====================================================================
+# 1. TECNOLOGÍA, COMPUTACIÓN Y ELECTRÓNICA (Equivalentes)
+# =====================================================================
+celular, celular inteligente, telefono, movil, smartphone, dispositivo movil
+computadora, computador, pc, notebook, ordenador, laptop, computadora de escritorio
+televisor, television, tv, smart tv, pantalla, led, lcd, oled
+auriculares, audifonos, manos libres, cascos, parlantes de oido, earbuds
+tableta, tablet, ipad
+reloj inteligente, smart watch, smartwatch, banda inteligente, smartband
+consola, videojuegos, playstation, xbox, nintendo, play, play_station
+parlante, altavoz, bocina, bafle, corneta, altavoces
+cargador, fuente de alimentacion, adaptador, cable de carga
+camara, camara fotografica, camara digital, dslr, reflex
+memoria usb, pendrive, pen drive, memoria flash, llave maya
+disco duro, disco solido, ssd, hdd, almacenamiento externo
+
+# =====================================================================
+# 2. ROPA, CALZADO Y MODA (Equivalentes)
+# =====================================================================
+zapatillas, tenis, zapatos, calzado, bambas, championes, botines, calzados
+remera, camiseta, playera, polo, casaca, franela, remeras
+pantalon, pantalones, jean, jeans, vaqueros, shorts, bermudas
+campera, chaqueta, abrigo, saco, cazadora, parca, chaleco
+buzo, sudadera, hoddie, sueter, jersey, pulover
+traje de bano, maya, malla, bikini, short de bano, bano
+ropa interior, calzoncillos, boxers, bombachas, bragas, bofes
+cartera, bolso, mochila, morral, bolso de mano, billetera, billeteras
+gafas, anteojos, lentes, gafas de sol, antiparras
+
+# =====================================================================
+# 3. HOGAR, MUEBLES Y ELECTRODOMÉSTICOS (Equivalentes)
+# =====================================================================
+heladera, refri, refrigerador, refrigeradora, nevera, freezer
+cocina, estufa, horno, anafe, parilla
+microondas, micro onda, micro-ondas, horno microondas
+lavarropas, lavadora, secarropas, secadora
+sillon, sofa, divan, canape, butaca, asiento
+cama, colchon, sommier, plaza, plazas
+almohada, almohadon, cojin, cojines
+lampara, foco, bombita, luz, iluminacion, linterna
+pava, tetera, pava electrica, hervidor
+
+# =====================================================================
+# 4. TÉRMINOS COMERCIALES, LOGÍSTICA Y SOPORTE (Equivalentes)
+# =====================================================================
+tienda, comercio, local, negocio, sucursal, establecimiento
+envio, despacho, entrega, flete, distribucion, envio a domicilio
+comprar, adquirir, abonar, pagar, transaccionar
+carro, carrito, cesta, bolsa, carrito de compras
+descuento, oferta, promocion, rebaja, liquidacion, hot sale, cyber monday
+costo, precio, valor, tarifa, importe
+garantia, soporte, servicio tecnico, ayuda, asistencia
+devolucion, reembolso, cambio, reintegro
+
+# =====================================================================
+# 5. MAPEOS EXPLÍCITOS / DIRECCIONALES (Unificación de términos y acrónimos)
+# =====================================================================
+# Conectividad y Redes
+wi fi, wifi, wi-fi, wlan => wifi
+bt, bth => bluetooth
+bt v5, bluetooth 5, bluetooth 5.0 => bluetooth 5
+usb c, usb-c, usb tipo c => usb-c
+
+# Imagen y Video
+hd, fhd, 4k, uhd, qhd, alta definicion => alta definicion
+displayport, dp => displayport
+hdmi 2.1, hdmi21 => hdmi 2.1
+
+# Marcas y Productos Específicos (Corrección de escritura / Slangs)
+play 5, ps5, playstation5 => playstation 5
+play 4, ps4, playstation4 => playstation 4
+nintendo switch, la switch, nsw => nintendo switch
+aifon, ifon, iphone 15, iphone15 => iphone
+galaxy s, samsung galaxy, s24, s23 => samsung galaxy
+airpods, air pods => airpods
+
+# Errores ortográficos comunes (Evita que el buscador falle por una letra)
+bici, bicleta, velocipedo => bicicleta
+autores, coche, carro, automovil => auto
+exprimir, juguera, extractor => extractor de jugos
+licuadora, licuador => licuadora
