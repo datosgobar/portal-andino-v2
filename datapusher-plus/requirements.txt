@@ -1,0 +1,31 @@
+semver==3.0.4
+datasize==1.0.0
+jinja2>=3.1.4
+fiona==1.10.1
+pandas==2.2.3
+shapely==2.1.0
+pyproj>=3.7.1
+prefect>=3.7,<3.8
+# importlib_metadata: declared explicitly because prefect 3.7.1's
+# ``workers/base.py`` imports it unconditionally but doesn't list it
+# as a direct dep — it was being satisfied transitively by
+# ``opentelemetry-api`` until 1.42.0 (released 2026-05-19) dropped
+# that transitive. Without this pin, ``prefect worker start`` fails
+# with ``ModuleNotFoundError: No module named 'importlib_metadata'``
+# and breaks the integration-test workflow. Pinned loose because
+# the backport's API is stable across versions; the stdlib has
+# ``importlib.metadata`` since Python 3.8 but Prefect specifically
+# imports the backport spelling.
+importlib_metadata>=4.6
+# blake3: default for ckanext.datapusher_plus.file_hash_algorithm (issue #221).
+# Pure-Python fallback is in stdlib's hashlib for sha256/md5; blake3 is the
+# only one that needs an external package. Pinned loose because the wheel
+# contract is stable and the Rust binding is fast across versions.
+blake3>=1.0.7
+# babel: used by AnalysisStage._normalize_locale_numbers for CLDR-backed
+# parsing of locale-specific number formats (issue #112 — German
+# comma-decimal, French space-thousands, etc.). babel is already a
+# transitive dependency via CKAN core's i18n stack; declared here
+# explicitly because DP+ imports ``babel.numbers`` directly now and
+# shouldn't rely on the upstream pin staying loose.
+babel>=2.9
