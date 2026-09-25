@@ -156,7 +156,7 @@ services:
       PREFECT_API_DATABASE_CONNECTION_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/prefect
       PREFECT_SERVER_API_HOST: 0.0.0.0
       # La URL que el navegador usa para llegar a la API; debe coincidir con el puerto expuesto.
-      PREFECT_SERVER_UI_API_URL: {PREFECT_HOST}:${PREFECT_PORT_HOST:-4200}/api
+      PREFECT_SERVER_UI_API_URL: ${PREFECT_HOST}:${PREFECT_PORT_HOST:-4200}/api
     command: prefect server start
     ports:
       - "${PREFECT_PORT_HOST:-4200}:4200"
