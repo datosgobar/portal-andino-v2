@@ -44,7 +44,7 @@ services:
     env_file:
       - .env
     environment:
-      PREFECT_API_URL: http://prefect-server:4200/api
+      PREFECT_API_URL: ${PREFECT_URL}/api
       # Generar con:
       #   docker compose ... exec ckan ckan -c /etc/ckan/default/ckan.ini \
       #       user token add ckan_admin datapusher_plus
@@ -156,10 +156,10 @@ services:
       PREFECT_API_DATABASE_CONNECTION_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/prefect
       PREFECT_SERVER_API_HOST: 0.0.0.0
       # La URL que el navegador usa para llegar a la API; debe coincidir con el puerto expuesto.
-      PREFECT_SERVER_UI_API_URL: ${PREFECT_HOST}:${PREFECT_PORT_HOST:-4200}/api
+      PREFECT_SERVER_UI_API_URL: ${PREFECT_URL}/api
     command: prefect server start
     ports:
-      - "${PREFECT_PORT_HOST:-4200}:4200"
+      - "4200:4200"
     networks:
       - dbnet
       - prefectnet
@@ -185,7 +185,7 @@ services:
       ckan:
         condition: service_healthy
     environment:
-      PREFECT_API_URL: http://prefect-server:4200/api
+      PREFECT_API_URL: ${PREFECT_URL}/api
       CKAN_INI: /srv/app/ckan.ini
       PYTHONUNBUFFERED: 1
       CKAN_SQLALCHEMY_URL: postgresql://${CKAN_DB_USER}:${CKAN_DB_PASSWORD}@db:5432/${CKAN_DB}
