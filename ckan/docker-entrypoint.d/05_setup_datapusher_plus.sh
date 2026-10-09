@@ -13,6 +13,7 @@ if [[ $CKAN__PLUGINS == *"datapusher_plus"* ]]; then
       echo "Set up ckan.datastore.write_url in the CKAN config file"
       ckan config-tool $CKAN_INI "ckan.datastore.write_url=$CKAN_DATASTORE_WRITE_URL"
    fi
+   ckan --config=/srv/app/ckan.ini datapusher_plus prefect-deploy
 else
    echo "Not configuring DataPusher"
 fi

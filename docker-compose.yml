@@ -44,7 +44,7 @@ services:
     env_file:
       - .env
     environment:
-      PREFECT_API_URL: ${PREFECT_URL}/api
+      PREFECT_API_URL: http://prefect-server:4200/api
       # Generar con:
       #   docker compose ... exec ckan ckan -c /etc/ckan/default/ckan.ini \
       #       user token add ckan_admin datapusher_plus
@@ -185,7 +185,7 @@ services:
       ckan:
         condition: service_healthy
     environment:
-      PREFECT_API_URL: ${PREFECT_URL}/api
+      PREFECT_API_URL: http://prefect-server:4200/api
       CKAN_INI: /srv/app/ckan.ini
       PYTHONUNBUFFERED: 1
       CKAN_SQLALCHEMY_URL: postgresql://${CKAN_DB_USER}:${CKAN_DB_PASSWORD}@db:5432/${CKAN_DB}
@@ -196,7 +196,7 @@ services:
       # Código fuente montado editable; cambios en DP+ se toman con docker compose restart prefect-worker.
       - ckan_storage:/var/lib/ckan
       - pip_cache:/root/.cache/pip
-      - local_bin:/usr/local/bin
+     # - local_bin:/usr/local/bin
       - home_dir:/srv/app/
       - site_packages:/usr/local/lib/python3.10/site-packages
 
