@@ -28,12 +28,14 @@ services:
     networks:
       - webnet
       - ckannet
+      - prefectnet
     depends_on:
       ckan:
         condition: service_healthy
     ports:
       - "0.0.0.0:${NGINX_SSLPORT_HOST}:${NGINX_SSLPORT}"
       - "0.0.0.0:${NGINX_PORT_HOST}:${NGINX_PORT}"
+      - "0.0.0.0:4200:4200"
 
   ckan:
     build:
@@ -158,8 +160,6 @@ services:
       # La URL que el navegador usa para llegar a la API; debe coincidir con el puerto expuesto.
       PREFECT_SERVER_UI_API_URL: ${PREFECT_URL}/api
     command: prefect server start
-    ports:
-      - "4200:4200"
     networks:
       - dbnet
       - prefectnet

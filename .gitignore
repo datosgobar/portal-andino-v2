@@ -9,3 +9,5 @@ _src/*
 local/*
 .env
 .env.local
+nginx/setup/ckan-local.crt
+nginx/setup/ckan-local.key
