@@ -14,7 +14,7 @@ el log).
 | `apn` | Portales de organismos de la Administración Pública Nacional: estética Poncho, con logo, textos, colores y contacto del organismo; sin rastros de la identidad de datos.gob.ar |
 
 ```
-CKANEXT__GOBAR_THEME__PROFILE=datosgobar
+CKANEXT__GOBAR_THEME__PROFILE=apn
 ```
 
 > Migración: el valor anterior `nacional` pasa a ser `datosgobar`, y `base` y
