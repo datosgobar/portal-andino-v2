@@ -1,4 +1,4 @@
-FROM ckan/ckan-base:2.11
+FROM ckan/ckan-base:2.11.5
 
 USER root
 
